@@ -1,0 +1,12 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.SignUp {
+  height: $fullScreen;
+  @include flexbox($jc: center, $ai: center);
+  .container {
+    width: 65rem;
+    padding: 3rem;
+    @include flexbox($jc: center, $ai: center);
+  }
+}
