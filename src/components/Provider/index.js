@@ -12,6 +12,7 @@ class DataProvider extends Component {
   storeCurrentUser = (user) => {
     this.setState({ user });
   }
+
   render() {
     return (
       <AppContext.Provider 
