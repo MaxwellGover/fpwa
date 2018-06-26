@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Uploader from './components/Uploader';
+import Uploader from '../../components/Uploader';
 
 const Profile = (props) => {
   if (!props.context.state.user) { 

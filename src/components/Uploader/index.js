@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { storage } from "../../../../initializers/firebase";
+import { storage } from "../../initializers/firebase";
 
 class Uploader extends Component {
   render() {
