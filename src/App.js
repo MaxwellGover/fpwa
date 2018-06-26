@@ -1,27 +1,30 @@
 import React, { Component } from 'react';
-import { Route, BrowserRouter } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 
 import './App.scss';
-import { auth } from "./initializers/firebase";
+import { auth, db } from "./initializers/firebase";
 import SignUp from './components/SignUp/SignUp';
 import { AppContext } from './components/Provider';
 
+const Profile = () => (<h1>PROFILE</h1>)
+
 class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {};
-  }
-
   componentDidMount() {
     auth.onAuthStateChanged(user => {
       if (user) {
-        // User is signed in.
-        console.log(user);
-        console.log(this.props.context);
-        // Get current users info from db and store it in context
+        const usersRef = db.collection('users').doc(user.uid);
+        usersRef
+          .get()
+          .then(doc =>
+            this.props.context.storeCurrentUser(
+              doc.data(),
+              this.props.history.push(
+                `/users/${doc.data().username}` // TODO: Change to username. Figure out how to get updated state async
+              )
+            ),
+          );
       } else {
-        console.log("No user signed in");
+        this.props.history.push(`/sign-up`);
       }
     });
   }
@@ -29,18 +32,17 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <BrowserRouter>
-          <Route path="/" component={SignUp} />
-        </BrowserRouter>
+        <Route path="/sign-up" component={SignUp} />
+        <Route path="/users/:username" component={Profile} />
       </div>
     );
   }
 }
 
-const AppWithData = () => (
+const AppWithData = (props) => (
   <AppContext.Consumer>
-    {(context) => <App context={context} />}
+    {(context) => <App context={context} history={props.history} match={props.match} />}
   </AppContext.Consumer>
 );
 
-export default AppWithData;
+export default withRouter(AppWithData);

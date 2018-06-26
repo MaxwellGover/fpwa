@@ -6,11 +6,11 @@ class DataProvider extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { name: 'Max' }
+    this.state = {};
   }
 
   storeCurrentUser = (user) => {
-    this.setState({ user });
+    this.setState({ user }, () => this.state.user );
   }
 
   render() {
@@ -18,7 +18,7 @@ class DataProvider extends Component {
       <AppContext.Provider 
         value={{ 
           state: this.state,
-          storeCurrentUser: () => this.storeCurrentUser()
+          storeCurrentUser: (user) => this.storeCurrentUser(user)
         }}
       >
         {this.props.children}
