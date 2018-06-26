@@ -3,10 +3,9 @@ import { Route, withRouter } from 'react-router-dom';
 
 import './App.scss';
 import { auth, db } from "./initializers/firebase";
-import SignUp from './components/SignUp/SignUp';
+import SignUp from './components/SignUp/SignUp'; // Move to views;
+import { Profile } from './views';
 import { AppContext } from './components/Provider';
-
-const Profile = () => (<h1>PROFILE</h1>)
 
 class App extends Component {
   componentDidMount() {
@@ -33,7 +32,7 @@ class App extends Component {
     return (
       <div className="App">
         <Route path="/sign-up" component={SignUp} />
-        <Route path="/users/:username" component={Profile} />
+        <Route path="/users/:username" render={() => <Profile context={this.props.context} />} />
       </div>
     );
   }

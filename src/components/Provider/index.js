@@ -10,7 +10,7 @@ class DataProvider extends Component {
   }
 
   storeCurrentUser = (user) => {
-    this.setState({ user }, () => this.state.user );
+    this.setState({ user });
   }
 
   render() {
