@@ -1,0 +1,8 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.Login {
+  height: $fullScreen;
+  border: 2px solid lawngreen;
+  @include flexbox($d: column, $jc: center, $ai: center);
+}

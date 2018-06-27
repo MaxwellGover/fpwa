@@ -1,6 +1,6 @@
-@mixin flexbox($display: flex, $direction: row, $jc: flex-start, $ai: flex-start) {
+@mixin flexbox($display: flex, $d: row, $jc: flex-start, $ai: flex-start) {
   display: $display;
-  flex-direction: $direction;
+  flex-direction: $d;
   justify-content: $jc;
   align-items: $ai;
 }

@@ -3,14 +3,14 @@ import { Route, withRouter } from 'react-router-dom';
 
 import './App.scss';
 import { auth, db } from "./initializers/firebase";
-import SignUp from './components/SignUp/SignUp'; // Move to views;
-import { Profile } from './views';
+import { Profile, Login } from './views';
 import { AppContext } from './components/Provider';
 
 class App extends Component {
   componentDidMount() {
     auth.onAuthStateChanged(user => {
       if (user) {
+        // TODO: Pull out into helper function
         const usersRef = db.collection('users').doc(user.uid);
         usersRef
           .get()
@@ -18,12 +18,12 @@ class App extends Component {
             this.props.context.storeCurrentUser(
               doc.data(),
               this.props.history.push(
-                `/users/${doc.data().username}` // TODO: Change to username. Figure out how to get updated state async
+                `/users/${doc.data().username}`
               )
             ),
           );
       } else {
-        this.props.history.push(`/sign-up`);
+        this.props.history.push(`/login`);
       }
     });
   }
@@ -31,7 +31,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Route path="/sign-up" component={SignUp} />
+        <Route path="/login" component={Login} />
         <Route path="/users/:username" render={() => <Profile context={this.props.context} />} />
       </div>
     );
