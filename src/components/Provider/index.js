@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { isMobile } from '../../helpers';
+
 export const AppContext = React.createContext();
 
 class DataProvider extends Component {
@@ -7,6 +9,10 @@ class DataProvider extends Component {
     super(props);
 
     this.state = {};
+  }
+
+  componentWillMount() {
+    this.setState({ mobile: isMobile() });
   }
 
   storeCurrentUser = (user) => {
