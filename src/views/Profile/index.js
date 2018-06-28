@@ -12,7 +12,7 @@ const Profile = (props) => {
   return (
     <div>
       <h1>{user.username}</h1>
-      <Uploader />
+      <Uploader user={user} />
     </div>
   );
 }

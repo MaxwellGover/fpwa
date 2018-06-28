@@ -31,7 +31,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Route path="/login" component={Login} />
+        <Route path="/login" render={() => <Login context={this.props.context} history={this.props.history} />} />
         <Route path="/users/:username" render={() => <Profile context={this.props.context} />} />
       </div>
     );
