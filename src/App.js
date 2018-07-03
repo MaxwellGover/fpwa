@@ -2,26 +2,22 @@ import React, { Component } from 'react';
 import { Route, withRouter } from 'react-router-dom';
 
 import './App.scss';
-import { auth, db } from "./initializers/firebase";
+import { auth } from "./initializers/firebase";
 import { Profile, Login } from './views';
 import { AppContext } from './components/Provider';
+import { userQuery, userUploadsQuery } from './queries';
 
 class App extends Component {
   componentDidMount() {
     auth.onAuthStateChanged(user => {
-      if (user) {
-        // TODO: Pull out into helper function
-        const usersRef = db.collection('users').doc(user.uid);
-        usersRef
-          .get()
-          .then(doc =>
-            this.props.context.storeCurrentUser(
-              doc.data(),
-              this.props.history.push(
-                `/users/${doc.data().username}`
-              )
-            ),
-          );
+      if (user) {        
+        userUploadsQuery(user.uid)
+          .then((userUploads) => {
+            userQuery(user.uid)
+              .then((user) => { 
+                this.props.context.storeCurrentUser({ ...user, userUploads });
+              });
+          });
       } else {
         this.props.history.push(`/login`);
       }
