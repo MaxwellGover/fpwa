@@ -10,7 +10,7 @@ import { userQuery, userUploadsQuery } from './queries';
 class App extends Component {
   componentDidMount() {
     auth.onAuthStateChanged(user => {
-      if (user) {        
+      if (user) {
         userUploadsQuery(user.uid)
           .then((userUploads) => {
             userQuery(user.uid)

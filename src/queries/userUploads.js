@@ -3,7 +3,6 @@ import { db } from "../initializers/firebase";
 const uploadedSongs = [];
 
 const userUploadsQuery = (id) => {
-  console.log(id)
   const promise = new Promise((resolve, reject) => {
     const query = db
       .collection("users")
