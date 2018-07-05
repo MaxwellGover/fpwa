@@ -15,6 +15,7 @@ class App extends Component {
           .then((userUploads) => {
             userQuery(user.uid)
               .then((user) => { 
+                console.log(this.props.context)
                 this.props.context.storeCurrentUser({ ...user, userUploads });
               });
           });

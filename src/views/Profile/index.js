@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Uploads, Uploader } from '../../components';
+import { Uploads, Uploader, VideoUploader } from '../../components';
 
 const Profile = (props) => {
   if (!props.context.state.user) { 
@@ -14,6 +14,7 @@ const Profile = (props) => {
       <h1>{user.username}</h1>
       <Uploader user={user} />
       <Uploads />
+      <VideoUploader />
     </div>
   );
 }

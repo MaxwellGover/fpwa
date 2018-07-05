@@ -44,18 +44,13 @@ class Uploader extends Component {
   }
 
   render() {
-    return (
-      <div>
-        <input type="file" onChange={(event) => this.handleUpload(event)} />
-        {this.state.songUploaded && (
-          <Fragment>
-            <input onChange={(event) => this.addSongName(event)} />
+    return <div>
+        <input type="file" accept="audio/*" onChange={event => this.handleUpload(event)} />
+        {this.state.songUploaded && <Fragment>
+            <input onChange={event => this.addSongName(event)} />
             <button onClick={() => this.addSong()}>Add song</button>
-          </Fragment>
-          )
-        }
-      </div>
-    );
+          </Fragment>}
+      </div>;
   }
 }
 

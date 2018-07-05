@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { auth, db } from '../../../../initializers/firebase';
 
+import { AppContext } from "../../../../components/Provider";
 import './styles.scss';
 
 class SignIn extends Component {
