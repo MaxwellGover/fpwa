@@ -1,0 +1,16 @@
+.Uploads {
+  border: 2px solid hotpink;
+  width: 100%;
+  background: #000;
+
+  &__listItem {
+    padding: 1rem;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+  }
+
+  &__songName {
+    font-size: 1.4rem;
+    color: #fff;
+  }
+}

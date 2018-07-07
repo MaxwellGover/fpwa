@@ -1,0 +1,17 @@
+@import '../../styles/mixins';
+
+.VideoUploader {
+  height: 3rem;
+  width: 100%;
+  display: relative;
+  border: 2px solid blue;
+
+  &__input {
+    border: 2px solid greenyellow;
+    width: 100%;
+    height: 100%;
+    display: absolute;
+    top: 0;
+    // opacity: 0;
+  }
+}

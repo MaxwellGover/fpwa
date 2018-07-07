@@ -3,21 +3,18 @@ import { Route, withRouter } from 'react-router-dom';
 
 import './App.scss';
 import { auth } from "./initializers/firebase";
-import { Profile, Login } from './views';
+import { Profile, Login, SongProfile } from './views';
 import { AppContext } from './components/Provider';
-import { userQuery, userUploadsQuery } from './queries';
+import { userQuery } from './queries';
 
 class App extends Component {
   componentDidMount() {
     auth.onAuthStateChanged(user => {
       if (user) {
-        userUploadsQuery(user.uid)
-          .then((userUploads) => {
-            userQuery(user.uid)
-              .then((user) => { 
-                console.log(this.props.context)
-                this.props.context.storeCurrentUser({ ...user, userUploads });
-              });
+        userQuery(user.uid)
+          .then(user => {
+            this.props.context.storeCurrentUser(user);
+            this.props.history.push(`/users/${this.props.context.state.user.username}`);
           });
       } else {
         this.props.history.push(`/login`);
@@ -25,11 +22,27 @@ class App extends Component {
     });
   }
 
+  signOutUser = () => {
+    auth.signOut().then(() => {
+      // Sign-out successful.
+      console.log('User signed out')
+    }).catch(error => {
+      // An error happened.
+      console.log('Could not sign user out')
+    });
+  }
+
   render() {
     return (
       <div className="App">
+        <nav className="App__nav">
+          <a href="#" onClick={() => this.signOutUser()}>
+            Sign out
+          </a>
+        </nav>
         <Route path="/login" render={() => <Login context={this.props.context} history={this.props.history} />} />
-        <Route path="/users/:username" render={() => <Profile context={this.props.context} />} />
+        <Route path="/users/:username" render={() => <Profile context={this.props.context} history={this.props.history} />} exact />
+        <Route path="/users/:username/:songId" render={() => <SongProfile context={this.props.context} />} exact />
       </div>
     );
   }

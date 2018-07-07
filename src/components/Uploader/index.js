@@ -35,7 +35,11 @@ class Uploader extends Component {
       name: this.state.songName, // placeholder until user inputs a song name
       url: this.state.downloadUrl,
     })
-    .then(() => { console.log('Song added to the db successfully')})
+    .then((docRef) => {
+      db.collection('users').doc(this.props.user.id).collection('uploadedSongs').doc(docRef.id).update({
+        id: docRef.id
+      })
+    })
     .catch((error) => { console.warn(error)})
   }
 

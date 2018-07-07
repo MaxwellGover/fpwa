@@ -16,7 +16,13 @@ class DataProvider extends Component {
   }
 
   storeCurrentUser = (user) => {
-    this.setState({ user });
+    this.setState({ user }, () => {
+      // this.props.history.push(`/users/${this.props.context.state.user.username}`);
+    });
+  }
+
+  storeSongId = (songId) => {
+    this.setState({ songId });
   }
 
   render() {
@@ -24,7 +30,8 @@ class DataProvider extends Component {
       <AppContext.Provider 
         value={{ 
           state: this.state,
-          storeCurrentUser: (user) => this.storeCurrentUser(user)
+          storeCurrentUser: (user) => this.storeCurrentUser(user),
+          storeSongId: (songId) => this.storeSongId(songId)
         }}
       >
         {this.props.children}
