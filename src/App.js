@@ -25,7 +25,8 @@ class App extends Component {
   signOutUser = () => {
     auth.signOut().then(() => {
       // Sign-out successful.
-      console.log('User signed out')
+      console.log('User signed out');
+      this.props.history.push('/');
     }).catch(error => {
       // An error happened.
       console.log('Could not sign user out')
@@ -36,13 +37,19 @@ class App extends Component {
     return (
       <div className="App">
         <nav className="App__nav">
-          <a href="#" onClick={() => this.signOutUser()}>
-            Sign out
-          </a>
+          <i class="material-icons App__backIcon" onClick={() => this.props.history.goBack()}>
+            keyboard_arrow_left
+          </i>
+          <span className="App__logo">
+            FLAMMABLE
+          </span>
+          <i className="material-icons App__signOutIcon" onClick={() => this.signOutUser()}>
+            launch
+          </i>
         </nav>
         <Route path="/login" render={() => <Login context={this.props.context} history={this.props.history} />} />
         <Route path="/users/:username" render={() => <Profile context={this.props.context} history={this.props.history} />} exact />
-        <Route path="/users/:username/:songId" render={() => <SongProfile context={this.props.context} />} exact />
+        <Route path="/users/:username/:songId" render={() => <SongProfile context={this.props.context} history={this.props.history} match={this.props.match} />} exact />
       </div>
     );
   }
