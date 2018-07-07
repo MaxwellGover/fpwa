@@ -1,4 +1,5 @@
 @import './styles/mixins';
+@import url('https://fonts.googleapis.com/css?family=Knewave');
 
 .App {
   height: 100vh;
@@ -14,8 +15,11 @@
   }
 
   &__logo {
-    color: #fff;
-    font-size: 1.6rem;
+    font-size: 2.2rem;
+    background-image: linear-gradient(to right, #f1c40f, #e74c3c);
+    -webkit-background-clip: text;
+    color: transparent;
+    font-family: 'Knewave', cursive;
   }
 
   &__signOutIcon {
