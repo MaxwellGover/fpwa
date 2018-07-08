@@ -1,13 +1,30 @@
-@mixin flexbox($display: flex, $d: row, $jc: flex-start, $ai: flex-start) {
-  display: $display;
+@mixin flexbox($d: row, $jc: flex-start, $ai: flex-start) {
+  display: flex;
   flex-direction: $d;
   justify-content: $jc;
   align-items: $ai;
 }
 
-@mixin buttonStyles($bgColor: red) {
-  background-color: $bgColor;
+@mixin gradientButton($g1: #f1c40f, $g2: #e74c3c) {
+  background-image: linear-gradient(to right, $g1, $g2);
   width: 100%;
   border-radius: 3px;
-  border: 2px solid red;
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+@mixin inputStyles {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 3px;
+  border: none;
+  box-sizing: border-box;
+}
+
+@mixin helpTextStyles {
+  font-size: 1.4rem;
+  color: #fff;
+  margin-bottom: 2rem;
+  text-align: center;
 }

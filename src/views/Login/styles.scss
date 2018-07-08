@@ -3,6 +3,19 @@
 
 .Login {
   height: $fullScreen;
-  border: 2px solid lawngreen;
-  @include flexbox($d: column, $jc: center, $ai: center);
+
+  &__signUp {
+    margin: 4rem 2rem;
+  }
+
+  &__helpText {
+    font-size: 1.4rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #fff;
+  }
+
+  &__signUpButton {
+    @include gradientButton;
+  }
 }

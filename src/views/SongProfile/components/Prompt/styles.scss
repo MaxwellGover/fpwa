@@ -1,0 +1,8 @@
+@import '../../../../styles/mixins';
+@import '../../../../styles/variables';
+
+.Prompt {
+  height: $fullScreen;
+  border: 2px solid aquamarine;
+  @include flexbox($d: column, $jc: center, $ai: center);
+}

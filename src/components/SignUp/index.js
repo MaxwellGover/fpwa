@@ -47,10 +47,13 @@ class SignUp extends Component {
   render() {
     return (
       <div className="SignUp">
-        <div className="container">
+        <div className="SignUp__container">
+          <p className="SignUp__helpText">
+            Create an account
+          </p>
           <input
             autoComplete='off'
-            className="input emailInput"
+            className="SignUp__input emailInput"
             onChange={(e) => this.handleOnChange(e, 'email')}
             placeholder="Enter your email" 
             type="email" 
@@ -58,7 +61,7 @@ class SignUp extends Component {
           />
           <input
             autoComplete='off'
-            className="input pwInput" 
+            className="SignUp__input pwInput" 
             min={8} 
             onChange={(e) => this.handleOnChange(e, 'password')}
             type="password" 
@@ -67,7 +70,7 @@ class SignUp extends Component {
           />
           <input
             autoComplete='off'
-            className="input usernameInput"  
+            className="SignUp__input usernameInput"  
             onChange={(e) => this.handleOnChange(e, 'username')}
             type="text" 
             placeholder="Pick a username" 
@@ -75,13 +78,13 @@ class SignUp extends Component {
           />
           <input
             autoComplete='off'
-            className="input displayNameInput"  
+            className="SignUp__input displayNameInput"  
             onChange={(e) => this.handleOnChange(e, 'displayName')}
             type="text" 
             placeholder="Pick a display name" 
             value={this.state.displayName} 
           />
-          <button className="submitButton" onClick={() => this.handleCreateNewUser()}>
+          <button className="SignUp__submitButton" onClick={() => this.handleCreateNewUser()}>
             Sign Up
           </button>
         </div>

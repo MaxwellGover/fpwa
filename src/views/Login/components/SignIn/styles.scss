@@ -2,5 +2,29 @@
 @import '../../../../styles/variables';
 
 .SignIn {
+  margin: 2rem;
 
+  &__helpText {
+    font-size: 1.4rem;
+    color: #fff;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .input {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 3px;
+    border: none;
+    box-sizing: border-box;
+  }
+
+  &__emailInput {
+    margin-bottom: 1rem;
+  }
+
+  &__button {
+    @include gradientButton;
+    margin-top: 2rem;
+  }
 }

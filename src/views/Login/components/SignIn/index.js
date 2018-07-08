@@ -50,9 +50,12 @@ class SignIn extends Component {
   render() {
     return (
       <div className="SignIn">
+        <p className="SignIn__helpText">
+          Already have an account?
+        </p>
         <input
           autoComplete='off'
-          className="input emailInput"
+          className="input SignIn__emailInput"
           onChange={(e) => this.handleOnChange(e, 'email')}
           placeholder="Enter your email" 
           type="email" 
@@ -67,10 +70,23 @@ class SignIn extends Component {
           placeholder="Enter a password" 
           value={this.state.password} 
         />
-        <button className="SignIn__button" onClick={() => this.handleSignInUser()}>Sign In</button>
+        <button className="SignIn__button" onClick={() => this.handleSignInUser()}>
+          Sign In
+        </button>
       </div>
     );
   }
 }
 
-export default SignIn;
+const SignInWithData = props => {
+  console.log(props);
+  return (
+    <AppContext.Consumer>
+      {context => (
+        <SignIn context={context} history={props.history} />
+      )}
+    </AppContext.Consumer>
+  );
+};
+
+export default SignInWithData;

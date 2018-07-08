@@ -34,6 +34,11 @@ class Uploader extends Component {
     db.collection('users').doc(this.props.user.id).collection('uploadedSongs').add({
       name: this.state.songName, // placeholder until user inputs a song name
       url: this.state.downloadUrl,
+      active: false,
+      streamsPurchased: 0,
+      amountGrossed: 0,
+      timesActive: 0,
+      timestamp: new Date(),
     })
     .then((docRef) => {
       db.collection('users').doc(this.props.user.id).collection('uploadedSongs').doc(docRef.id).update({

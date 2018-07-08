@@ -3,10 +3,24 @@
 
 .SignUp {
   height: $fullScreen;
-  @include flexbox($jc: center, $ai: center);
-  .container {
-    width: 65rem;
-    padding: 3rem;
-    @include flexbox($jc: center, $ai: center);
+  padding: 2rem;
+  
+  &__container {
+    @include flexbox($d: column, $jc: center, $ai: center);
+    width: 100%;
+  }
+
+  &__helpText {
+    @include helpTextStyles;
+  }
+
+  &__input {
+    @include inputStyles;
+    margin-bottom: 1.5rem;
+  }
+
+  &__submitButton {
+    @include gradientButton;
+    margin-top: 2rem;
   }
 }

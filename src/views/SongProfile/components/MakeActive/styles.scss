@@ -1,0 +1,16 @@
+@import '../../../../styles/mixins';
+
+.MakeActive {
+  border: 2px solid tomato;
+  margin: 2rem;
+  
+  &__button {
+    @include gradientButton;
+  }
+
+  &__helpText {
+    @include helpTextStyles;
+    font-size: 1rem;
+    text-align: left;
+  }
+}

@@ -1,12 +1,19 @@
 import React from 'react';
 
-import { SignIn, SignUp } from './components';
+import { SignIn } from './components';
 import './styles.scss';
 
-const Login = () => (
+const Login = (props) => (
   <div className="Login">
-    <SignUp />
     <SignIn />
+    <div className="Login__signUp">
+      <p className="Login__helpText">
+        New? 
+      </p>
+      <button className="Login__signUpButton" onClick={() => props.history.push('/sign-up')}>
+        Create an account
+      </button>
+    </div>
   </div>
 );
 

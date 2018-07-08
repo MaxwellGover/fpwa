@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Uploads, Uploader, VideoUploader } from '../../components';
+import { Header } from './components';
 import './styles.scss';
 
 const Profile = (props) => {
@@ -9,13 +10,10 @@ const Profile = (props) => {
   };
 
   const { user } = props.context.state;
-  // TODO: Hide upload button if on mobile device
   return (
     <div className="Profile">
-      <h1>{user.username}</h1>
-      {/* <Uploader user={user} /> */}
+      <Header />
       <Uploads history={props.history} />
-      {/* <VideoUploader /> */}
     </div>
   );
 }
